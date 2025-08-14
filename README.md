@@ -30,6 +30,10 @@ Las clases `CajaAhorro` y `CuentaCorriente` heredan de la clase base `Cuenta`, r
 
 Las clases hijas (`CajaAhorro`, `CuentaCorriente`) pueden redefinir métodos de la clase base (`Cuenta`), permitiendo comportamientos específicos según el tipo de cuenta.
 
+## Diagrama de clases
+
+![diagrama_de_clases](/img/diagrama_clases.png)
+
 ## Requisitos
 
 - Node.js instalado
