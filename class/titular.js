@@ -13,5 +13,4 @@ class Titular {
     this.domicilio = domicilio;
     this.telefono = telefono;
   }
-
 }
