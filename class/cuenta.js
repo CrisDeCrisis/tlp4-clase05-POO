@@ -13,10 +13,6 @@ export class Cuenta {
 
     set saldo(nuevoSaldo) {
 
-        if (nuevoSaldo < 0) {
-            console.error("El saldo no puede ser negativo.");
-        }
-
         this.#saldo = nuevoSaldo;
 
     }

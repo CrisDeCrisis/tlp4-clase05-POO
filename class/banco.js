@@ -1,4 +1,5 @@
-import { Cuenta } from "./cuenta.js";
+import { CajaDeAhorro } from "./caja-ahorro.js";
+import { CuentaCorriente } from "./cuenta-corriente.js";
 
 export class Banco {
 
@@ -15,7 +16,14 @@ export class Banco {
   }
 
   abrirCuenta(titular, tipoCuenta, saldoInicial) {
-    const cuenta = new Cuenta(titular, tipoCuenta, saldoInicial);
+    let cuenta;
+    if (tipoCuenta.toLowerCase() === "ahorro") {
+      cuenta = new CajaDeAhorro(titular, saldoInicial);
+    } else if (tipoCuenta.toLowerCase() === "corriente") {
+      cuenta = new CuentaCorriente(titular, saldoInicial);
+    } else {
+      throw new Error("Tipo de cuenta no válido. Escriba ahorro o corriente.");
+    }
     this.#listaCuentas.push(cuenta);
     this.agregarCliente(titular);
     return cuenta;

@@ -37,8 +37,12 @@ while (opcion !== "6") {
       const tipoCuenta = prompt("Tipo de cuenta (Ahorro/Corriente): ");
       const saldoInicial = parseFloat(prompt("Saldo inicial: "));
 
-      const cuenta = banco.abrirCuenta(titular, tipoCuenta, saldoInicial);
-      console.log(`Cuenta abierta con éxito. Titular: ${cuenta.titular.nombre} ${cuenta.titular.apellido}, Saldo inicial: $${cuenta.saldo}`);
+      try {
+        const cuenta = banco.abrirCuenta(titular, tipoCuenta, saldoInicial);
+        console.log(`Cuenta ${tipoCuenta} abierta con éxito. Titular: ${cuenta.titular.nombre} ${cuenta.titular.apellido}, Saldo inicial: $${cuenta.saldo}`);
+      } catch (error) {
+        console.error(error.message);
+      }
       break;
 
     case "2":
