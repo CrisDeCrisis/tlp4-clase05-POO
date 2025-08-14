@@ -140,5 +140,10 @@ while (opcion !== "6") {
 
       break;
 
+    default:
+      if (opcion !== "6") {
+        console.error("Opción no válida. Por favor, intente nuevamente.");
+      }
+      break;
   }
 }
