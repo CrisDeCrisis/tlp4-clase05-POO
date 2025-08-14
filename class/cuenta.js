@@ -11,7 +11,7 @@ export class Cuenta {
 
     }
 
-    set saldo(saldoInicial) {
+    set saldo(nuevoSaldo) {
 
         if (nuevoSaldo < 0) {
             console.error("El saldo no puede ser negativo.");
@@ -27,11 +27,12 @@ export class Cuenta {
     }
 
     extraer(monto) {
+        if (monto <= 0) throw new Error('El monto a extraer no puede ser negativo');
         if (monto >= this.#saldo) throw new Error('Fondos insuficientes');
         this.#saldo -= monto;
     }
 
-    consultarSaldo() {
+    get saldo() {
         return this.#saldo;
     }
 }

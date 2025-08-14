@@ -14,7 +14,7 @@ export class Banco {
     this.#listaClientes.push(titular)
   }
 
-  abrirCuenta() {
+  abrirCuenta(titular, tipoCuenta, saldoInicial) {
     const cuenta = new Cuenta(titular, tipoCuenta, saldoInicial);
     this.#listaCuentas.push(cuenta);
     this.agregarCliente(titular);
@@ -22,25 +22,22 @@ export class Banco {
   }
 
   buscarCuenta(dni) {
-    return this.#listaCuentas.find(cuenta => cuenta.dni === dni);
+    return this.#listaCuentas.find(cuenta => cuenta.titular.dni === dni);
   }
 
   transferir(dniOrigen, dniDestino, importe) {
     const cuentaOrigen = this.buscarCuenta(dniOrigen);
     const cuentaDestino = this.buscarCuenta(dniDestino);
 
-    if (!cuentaOrigen) throw new Error('Cuenta de origen no encontrada');
-    if(!cuentaDestino) throw new Error('Cuenta de destino no encontrada');
-
     cuentaOrigen.extraer(importe);
     cuentaDestino.depositar(importe);
   }
 
-  listarCuentas() {
+  get listaCuentas() {
     return this.#listaCuentas;
   }
 
-  listarClientes() {
+  get listaClientes() {
     return this.#listaClientes;
   }
 }
