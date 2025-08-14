@@ -1,10 +1,12 @@
-class Banco {
+import { Cuenta } from "./cuenta.js";
+
+export class Banco {
 
   nombre;
   #listaCuentas = [];
   #listaClientes = [];
 
-  constructor(nombre, listaClientes, listaCuentas){
+  constructor(nombre){
     this.nombre = nombre;
   }
 
@@ -20,10 +22,10 @@ class Banco {
   }
 
   buscarCuenta(dni) {
-    return this.#listaCuentas.find(cuenta.dni === dni);
+    return this.#listaCuentas.find(cuenta => cuenta.dni === dni);
   }
 
-  transefir(dniOrigen, dniDestino, importe) {
+  transferir(dniOrigen, dniDestino, importe) {
     const cuentaOrigen = this.buscarCuenta(dniOrigen);
     const cuentaDestino = this.buscarCuenta(dniDestino);
 

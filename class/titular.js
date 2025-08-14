@@ -1,4 +1,4 @@
-class Titular {
+export class Titular {
 
   nombre;
   apellido;

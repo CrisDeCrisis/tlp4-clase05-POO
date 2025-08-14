@@ -1,4 +1,4 @@
-class cuenta {
+export class Cuenta {
     titular;
     tipoDeCuenta;
     #saldo;
@@ -21,4 +21,17 @@ class cuenta {
 
     }
 
+    depositar(monto) {
+        if (monto <= 0) throw new Error('El monto a ingresar no puede ser negativo');
+        this.#saldo += monto;
+    }
+
+    extraer(monto) {
+        if (monto >= this.#saldo) throw new Error('Fondos insuficientes');
+        this.#saldo -= monto;
+    }
+
+    consultarSaldo() {
+        return this.#saldo;
+    }
 }
